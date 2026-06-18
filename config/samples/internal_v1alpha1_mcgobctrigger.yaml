@@ -1,0 +1,14 @@
+apiVersion: internal.functions.dev/v1alpha1
+kind: MCGOBCTrigger
+metadata:
+  labels:
+    app.kubernetes.io/name: mcg-adapter
+    app.kubernetes.io/managed-by: kustomize
+  name: mcgobctrigger-sample
+spec:
+  obc:
+    name: foo-bucket
+  events:
+  - "s3:ObjectCreated:*"
+  triggers:
+  - uri: http://foo.default.svc.cluster.local
