@@ -29,7 +29,7 @@ func (s *NotificationServer) Start(ctx context.Context) error {
 		if err != nil {
 			return fmt.Errorf("creating kafka producer: %w", err)
 		}
-		defer kafkaProducer.Close()
+		defer func() { _ = kafkaProducer.Close() }()
 		log.Info("kafka producer initialized", "brokers", s.KafkaBrokers)
 	}
 

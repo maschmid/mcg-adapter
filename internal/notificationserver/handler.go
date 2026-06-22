@@ -59,7 +59,7 @@ func (h *notificationHandler) handleNotification(w http.ResponseWriter, r *http.
 		http.Error(w, "bad request", http.StatusBadRequest)
 		return
 	}
-	defer r.Body.Close()
+	defer func() { _ = r.Body.Close() }()
 
 	var payload notificationPayload
 	if err := json.Unmarshal(body, &payload); err != nil {

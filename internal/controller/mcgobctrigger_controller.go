@@ -188,7 +188,7 @@ func (r *MCGOBCTriggerReconciler) readOBCSecret(ctx context.Context, namespace, 
 	secretKey = string(secret.Data["AWS_SECRET_ACCESS_KEY"])
 
 	if accessKey == "" || secretKey == "" {
-		return "", "", fmt.Errorf("Secret %s/%s missing required keys (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)", namespace, name)
+		return "", "", fmt.Errorf("secret %s/%s missing required keys (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)", namespace, name)
 	}
 	return accessKey, secretKey, nil
 }
